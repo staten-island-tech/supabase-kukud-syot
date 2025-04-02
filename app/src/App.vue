@@ -6,7 +6,7 @@ import { RouterLink, RouterView } from 'vue-router'
   <div>
     <div class="min-h-screen flex flex-col pt-16">
       <div class="flex-1 p-4">
-        <RouterView />
+        <RoueterView />
       </div>
     </div>
   </div>

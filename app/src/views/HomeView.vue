@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div>
+    <button class="text-2xl">Sign In</button>
+  </div>
 </template>
 
 <script setup lang="ts"></script>

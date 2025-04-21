@@ -1,3 +1,4 @@
+<!-- google sign in -->
 <template>
   <div>
     <div class="g-signin2" data-onsuccess="onSignIn"></div>

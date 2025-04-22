@@ -6,13 +6,10 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { GoAuthKey } from '../supabase'
+import { GoAuthKey } from '../GetKeys'
 
-const handleCredentialResponse = (response: any) => {
-  const jwt = response.credential
-  console.log('JWT Token:', jwt)
-  // used later to send to supabase
-  // jwt is the user token for google
+function handleCredentialResponse(response) {
+  console.log('Encoded JWT ID token: ' + response.credential)
 }
 
 onMounted(() => {
@@ -27,8 +24,9 @@ onMounted(() => {
 
     // @ts-ignore
     window.google.accounts.id.renderButton(document.getElementById('g_id_signin'), {
-      theme: 'outline',
-      size: 'large',
+      scope: 'profile email',
+      width: 240,
+      height: 50,
     })
   }
 })

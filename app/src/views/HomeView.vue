@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button class="text-2xl">Sign In</button>
+    <button class="text-3xl text-red-300">Sign In</button>
     <SignIn />
   </div>
 </template>

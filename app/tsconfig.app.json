@@ -9,7 +9,7 @@
     },
     "module": "ESNext",
     "target": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "node",
     "types": ["vite/client"],
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true

@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import SignIn from './components/SignIn.vue'
+import { RouterView } from 'vue-router'
 </script>
 
 <template>
@@ -9,7 +8,6 @@ import SignIn from './components/SignIn.vue'
     <div class="min-h-screen flex flex-col pt-16">
       <div class="flex-1 p-4">
         <RouterView />
-        <SignIn />
       </div>
     </div>
   </div>

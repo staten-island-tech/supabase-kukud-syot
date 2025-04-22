@@ -28,7 +28,6 @@ onMounted(() => {
     // @ts-ignore
     window.google.accounts.id.renderButton(document.getElementById('g_id_signin'), {
       theme: 'outline',
-      size: 'large',
     })
   }
 })

@@ -7,9 +7,9 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "module": "ESNext",
+    "module": "Node16",
     "target": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "Node16",
     "types": ["vite/client"],
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true

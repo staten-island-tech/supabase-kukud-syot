@@ -6,10 +6,26 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { GoAuthKey } from '../GetKeys'
+import { GoAuthKey, supabase } from '../GetKeys'
 
 function handleCredentialResponse(response) {
   console.log('Encoded JWT ID token: ' + response.credential)
+}
+
+const addMessage = async () => {
+  try {
+    const { data, error } = await supabase
+      .from('messages') // Replace 'messages' with your table name
+      .insert([{ content: message.value }]) // Replace 'content' with the appropriate column name
+
+    if (error) {
+      throw error
+    }
+
+    console.log('Message inserted:', data)
+  } catch (error) {
+    console.error('Error inserting message:', error)
+  }
 }
 
 onMounted(() => {

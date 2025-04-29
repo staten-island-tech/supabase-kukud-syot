@@ -8,24 +8,22 @@
 import { onMounted } from 'vue'
 import { GoAuthKey, supabase } from '../GetKeys'
 
-function handleCredentialResponse(response) {
-  console.log('Encoded JWT ID token: ' + response.credential)
+const addID = async (jwtToken) => {
+  if (!jwtToken) return
+
+  try {
+    const { data, error } = await supabase.from('users').insert([{ id: jwtToken }])
+
+    if (error) throw error
+    console.log('id inserted to supabase:', data)
+  } catch (error) {
+    console.error('error adding ID:', error.message)
+  }
 }
 
-const addMessage = async () => {
-  try {
-    const { data, error } = await supabase
-      .from('messages') // Replace 'messages' with your table name
-      .insert([{ content: message.value }]) // Replace 'content' with the appropriate column name
-
-    if (error) {
-      throw error
-    }
-
-    console.log('Message inserted:', data)
-  } catch (error) {
-    console.error('Error inserting message:', error)
-  }
+function handleCredentialResponse(response) {
+  console.log('Encoded JWT ID token: ' + response.credential)
+  addID(response.credential)
 }
 
 onMounted(() => {

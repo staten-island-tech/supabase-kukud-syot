@@ -12,7 +12,7 @@ const addID = async (jwtToken) => {
   if (!jwtToken) return
 
   try {
-    const { data, error } = await supabase.from('users').insert([{ id: jwtToken }])
+    const { data, error } = await supabase.from('users').insert([{ google_jwt: jwtToken }])
 
     if (error) throw error
     console.log('id inserted to supabase:', data)

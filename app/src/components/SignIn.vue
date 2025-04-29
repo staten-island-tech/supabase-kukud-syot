@@ -6,10 +6,24 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { GoAuthKey } from '../GetKeys'
+import { GoAuthKey, supabase } from '../GetKeys'
+
+const addID = async (jwtToken) => {
+  if (!jwtToken) return
+
+  try {
+    const { data, error } = await supabase.from('users').insert([{ id: jwtToken }])
+
+    if (error) throw error
+    console.log('id inserted to supabase:', data)
+  } catch (error) {
+    console.error('error adding ID:', error.message)
+  }
+}
 
 function handleCredentialResponse(response) {
   console.log('Encoded JWT ID token: ' + response.credential)
+  addID(response.credential)
 }
 
 onMounted(() => {

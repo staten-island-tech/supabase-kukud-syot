@@ -6,11 +6,11 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { GoAuthKey, supabase } from '../../GetKeys'
+import { GoAuthKey, supabase } from '../GetKeys'
 
 async function handleCredentialResponse(response) {
   const { data, error } = await supabase.auth.signInWithIdToken({
-    provider: 'apple',
+    provider: 'google',
     token: response.credential,
   })
 }

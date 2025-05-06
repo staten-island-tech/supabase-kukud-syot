@@ -1,16 +1,16 @@
 <template>
   <div>
-    <div id="g_id_signin"></div>
+    <div id="appleid-signin" data-color="black" data-border="true" data-type="sign in"></div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { GoAuthKey, supabase } from '../GetKeys'
+import { GoAuthKey, supabase } from '../../GetKeys'
 
 async function handleCredentialResponse(response) {
   const { data, error } = await supabase.auth.signInWithIdToken({
-    provider: 'google',
+    provider: 'apple',
     token: response.credential,
   })
 }

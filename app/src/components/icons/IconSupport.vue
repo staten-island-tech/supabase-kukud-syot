@@ -5,3 +5,5 @@
     />
   </svg>
 </template>
+
+<!-- THIS HAS NOTHING TO dO WITH THE PROJECT -> DELETE LATER -->

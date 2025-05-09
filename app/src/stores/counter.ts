@@ -10,3 +10,5 @@ export const useCounterStore = defineStore('counter', () => {
 
   return { count, doubleCount, increment }
 })
+
+//THIS HAS NOTHING TO dO WITH THE PROJECT -> DELETE LATER

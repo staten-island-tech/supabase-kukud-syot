@@ -13,6 +13,7 @@ export default defineConfig({
     },
   },
   server: {
+    allowedHosts: ['devserver-main--shrekscavern.netlify.app'],
     headers: {
       'Cross-Origin-Opener-Policy': 'same-origin',
       'Cross-Origin-Embedder-Policy': 'require-corp',

@@ -1,4 +1,4 @@
-<template>
+<template class="flex justify-center">
   <div class="flex w-64 h-32 items-center justify-center border l-50px border-black bg-white">
     <RouterLink
       to="/signin"

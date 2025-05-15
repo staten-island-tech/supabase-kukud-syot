@@ -1,5 +1,5 @@
-<template>
-  <div class="flex items-center justify-center border border-black">
+<template class="flex justify-center">
+  <div class="flex w-64 h-32 items-center justify-center border l-50px border-black bg-white">
     <RouterLink
       to="/signin"
       class="border border-gray-500 rounded-lg w-50 text-center flex justify-center"

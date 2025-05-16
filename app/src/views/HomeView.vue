@@ -1,5 +1,7 @@
-<template class="flex justify-center">
-  <div class="flex w-64 h-32 items-center justify-center border l-50px border-black bg-white">
+<template>
+  <div
+    class="flex w-128 h-64 items-center justify-center border l-50px border-black bg-white border-rounded-lg shadow-lg rounded-md"
+  >
     <RouterLink
       to="/signin"
       class="border border-gray-500 rounded-lg w-50 text-center flex justify-center"
@@ -20,3 +22,27 @@
 <script setup></script>
 
 <style scoped></style>
+
+<!-- CHAT GPT GENERATED CODE -->
+<!-- <template>
+  <div class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div
+      class="flex w-128 h-64 items-center justify-center space-x-4 border border-black bg-white shadow-lg rounded-md"
+    >
+      <RouterLink
+        to="/signin"
+        class="border border-gray-500 rounded-lg w-50 text-center flex justify-center"
+        style="font-size: 30px"
+      >
+        Sign In
+      </RouterLink>
+      <RouterLink
+        to="/signup"
+        class="border border-gray-500 rounded-lg w-50 text-center flex justify-center"
+        style="font-size: 30px"
+      >
+        Sign Up
+      </RouterLink>
+    </div>
+  </div>
+</template> -->

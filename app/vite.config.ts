@@ -15,6 +15,7 @@ export default defineConfig({
     Pages({
       onRoutesGenerated: (routes) => {
         generateSitemap({
+          //show up on google searches
           routes,
           hostname: 'https://crocodillo.org',
           dest: 'public',

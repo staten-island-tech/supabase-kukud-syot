@@ -4,7 +4,7 @@ import vue from '@vitejs/plugin-vue'
 import tailwindcss from '@tailwindcss/vite'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import Pages from 'vite-plugin-pages'
-import generateSitemap from 'vite-plugin-pages-sitemap'
+import Sitemap from 'vite-plugin-sitemap'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -12,15 +12,9 @@ export default defineConfig({
     vue(),
     vueDevTools(),
     tailwindcss(),
-    Pages({
-      onRoutesGenerated: (routes) => {
-        generateSitemap({
-          //show up on google searches
-          routes,
-          hostname: 'https://crocodillo.org',
-          dest: 'public',
-        })
-      },
+    Pages(),
+    Sitemap({
+      hostname: 'https://crocodillo.org',
     }),
   ],
   resolve: {

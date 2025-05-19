@@ -3,17 +3,30 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import tailwindcss from '@tailwindcss/vite'
 import vueDevTools from 'vite-plugin-vue-devtools'
+import Pages from 'vite-plugin-pages'
+import Sitemap from 'vite-plugin-sitemap'
+
+const dynamicRoutes = ['/', '/signin', '/signup']
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [vue(), vueDevTools(), tailwindcss()],
+  plugins: [
+    vue(),
+    vueDevTools(),
+    tailwindcss(),
+    Pages(),
+    Sitemap({
+      hostname: 'https://crocodillo.org',
+      dynamicRoutes,
+    }),
+  ],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
   server: {
-    allowedHosts: ['devserver-main--shrekscavern.netlify.app'],
+    allowedHosts: ['devserver-main--crocodillo.netlify.app'],
     headers: {
       'Cross-Origin-Opener-Policy': 'same-origin',
       'Cross-Origin-Embedder-Policy': 'require-corp',

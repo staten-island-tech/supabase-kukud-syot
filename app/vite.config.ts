@@ -3,6 +3,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import tailwindcss from '@tailwindcss/vite'
 import vueDevTools from 'vite-plugin-vue-devtools'
+import Pages from 'vite-plugin-pages'
 import Sitemap from 'vite-plugin-sitemap'
 
 const redirects = ['', 'signin', 'signup']
@@ -14,6 +15,7 @@ export default defineConfig({
     vue(),
     vueDevTools(),
     tailwindcss(),
+    Pages(),
     Sitemap({
       hostname: 'https://crocodillo.org',
       dynamicRoutes,

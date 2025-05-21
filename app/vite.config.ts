@@ -10,7 +10,12 @@ const dynamicRoutes = redirects.map((redirect) => `/redirects/${redirect}`)
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [vue(), vueDevTools(), tailwindcss(), Sitemap({ dynamicRoutes })],
+  plugins: [
+    vue(),
+    vueDevTools(),
+    tailwindcss(),
+    Sitemap({ hostname: 'https://crocodillo.org', dynamicRoutes }),
+  ],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),

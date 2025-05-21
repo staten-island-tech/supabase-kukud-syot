@@ -14,7 +14,7 @@ export default defineConfig({
     vue(),
     vueDevTools(),
     tailwindcss(),
-    // Sitemap({ hostname: 'https://crocodillo.org', dynamicRoutes }),
+    Sitemap({ hostname: 'https://crocodillo.org', dynamicRoutes }),
   ],
   resolve: {
     alias: {

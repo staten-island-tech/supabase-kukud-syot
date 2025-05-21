@@ -1,10 +1,6 @@
 <template>
   <div
-<<<<<<< Updated upstream
     class="flex items-center justify-center w-128 h-64 border l-50px border-black bg-white border-rounded-lg shadow-lg rounded-md"
-=======
-    class="flex justify-center w-128 h-64 items-center border l-50px border-black bg-white border-rounded-lg shadow-lg rounded-md"
->>>>>>> Stashed changes
   >
     <RouterLink
       to="/signin"

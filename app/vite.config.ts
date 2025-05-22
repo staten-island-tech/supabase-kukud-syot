@@ -6,7 +6,7 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 import Sitemap from 'vite-plugin-sitemap'
 
 const redirects = ['', 'signin', 'signup']
-const dynamicRoutes = redirects.map((redirect) => `/redirects/${redirect}`)
+const dynamicRoutes = redirects.map((redirect) => `/${redirect}`)
 
 // https://vite.dev/config/
 export default defineConfig({

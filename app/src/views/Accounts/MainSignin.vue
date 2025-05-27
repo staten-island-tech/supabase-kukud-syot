@@ -9,8 +9,8 @@
 </template>
 
 <script setup>
-import GSignIn from '../../components/GSignIn.vue'
-import MSignIn from '../../components/MSignIn.vue'
+import GSignIn from '../../components/Manage Accounts/GSignIn.vue'
+import MSignIn from '../../components/Manage Accounts/MSignIn.vue'
 </script>
 
 <style scoped></style>

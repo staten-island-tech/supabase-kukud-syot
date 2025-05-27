@@ -9,7 +9,7 @@
 </template>
 
 <script setup>
-import SignUp from '../../components/SignUp.vue'
+import SignUp from '../../components/Manage Accounts/SignUp.vue'
 </script>
 
 <style scoped></style>

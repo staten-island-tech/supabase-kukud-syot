@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { GoAuthKey, supabase } from '../GetKeys'
+import { GoAuthKey, supabase } from '../../GetKeys'
 
 async function handleCredentialResponse(response) {
   const googleDisplayName = response?.credential?.displayName

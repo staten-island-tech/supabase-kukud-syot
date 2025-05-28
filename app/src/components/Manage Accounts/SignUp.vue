@@ -1,18 +1,11 @@
 <template>
-  <div
-    class="flex flex-col items-center justify-center w-128 h-64 border l-50px border-black bg-white border-rounded-lg shadow-lg rounded-md"
-  >
+  <div class="flex flex-col items-center space-y-4">
     <h1>Email: <input v-model="email" type="text" placeholder="Enter email" class="ml-2" /></h1>
     <h1>
       Password:
       <input v-model="password" type="password" placeholder="Enter password" class="ml-2" />
     </h1>
-    <button
-      @click="signUp"
-      class="flex flex-col justify-center mt-4 bg-blue-500 text-white px-4 py-2 rounded"
-    >
-      Sign Up
-    </button>
+    <button @click="signUp" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Sign Up</button>
   </div>
 </template>
 

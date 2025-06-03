@@ -1,2 +1,4 @@
+import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
-imp
+import type { User } from '@supabase/supabase-js'
+import { supabase } from '@/GetKeys.js'

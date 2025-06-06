@@ -22,7 +22,7 @@
       </div>
 
       <div class="flex justify-center items-center space-x-4 mt-1.5 mb-1.5">
-        <GSignIn />
+        <GSignIn @click="Gsubmit" />
       </div>
     </div>
   </div>
@@ -42,5 +42,13 @@ const submit = () => {
     return
   }
   emit('next')
+}
+
+const Gsubmit = () => {
+  if (!auth.email) {
+    alert('Enter email')
+    return
+  }
+  emit('submit')
 }
 </script>

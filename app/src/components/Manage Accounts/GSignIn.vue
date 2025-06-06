@@ -56,7 +56,7 @@ onMounted(() => {
     // @ts-ignore
     window.google.accounts.id.renderButton(document.getElementById('g_id_signin'), {
       scope: 'profile email',
-      width: 240,
+      width: 300,
       height: 50,
     })
   }

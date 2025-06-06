@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-import MSignIn from '../../components/Manage Accounts/MSignIn.vue'
+import MSignIn from '../../components/Manage Accounts/Signing In/MSignIn.vue'
 </script>
 
 <style scoped></style>

@@ -14,7 +14,7 @@ async function handleCredentialResponse(response) {
     provider: 'google',
     token: response.credential,
   })
-  window.location.href = '/'
+
   console.log(googleDisplayName)
 
   if (data) {
@@ -22,6 +22,7 @@ async function handleCredentialResponse(response) {
     if (googleDisplayName) {
       addData(googleDisplayName)
     }
+    window.location.href = '/'
   }
 
   if (error) {

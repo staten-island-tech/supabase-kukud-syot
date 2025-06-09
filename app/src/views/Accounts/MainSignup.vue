@@ -7,7 +7,7 @@
 </template>
 
 <script setup>
-import SignUp from '../../components/Manage Accounts/SignUp.vue'
+import SignUp from '../../components/Manage Accounts/Signing Up/MSignUp.vue'
 </script>
 
 <style scoped></style>

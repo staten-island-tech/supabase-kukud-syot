@@ -4,14 +4,7 @@
     <div
       class="flex flex-col justify-center w-128 h-64 border border-black bg-white shadow-lg rounded-md p-10"
     >
-      <label>Password:</label>
-      <input
-        v-model="auth.password"
-        type="password"
-        placeholder="Enter password"
-        class="w-full px-2 py-1 border border-gray-400 rounded"
-        @keyup.enter="submit"
-      />
+      <h1>Check your email, then sign into your newly created Crocodillo account.</h1>
 
       <!-- daisyui -->
       <div class="join grid grid-cols-2 gap-2 mt-4">
@@ -26,13 +19,9 @@
 import { useAuthStore } from '../../../stores/auth'
 const auth = useAuthStore()
 
-const emit = defineEmits(['back', 'next'])
+const emit = defineEmits(['back', 'submit'])
 
 const submit = () => {
-  if (!auth.password) {
-    alert('Enter Password')
-    return
-  }
-  emit('next')
+  emit('submit')
 }
 </script>

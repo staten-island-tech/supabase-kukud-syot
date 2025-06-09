@@ -10,7 +10,9 @@ import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '../../../stores/auth'
 
+// @ts-ignore
 import SignIn1 from './SignIn1.vue'
+// @ts-ignore
 import SignIn2 from './SignIn2.vue'
 
 //login steps

@@ -5,6 +5,7 @@ import { supabase } from '@/GetKeys.js'
 
 export const useAuthStore = defineStore('auth', () => {
   const user = ref<User | null>(null)
+  const username = ref('')
   const email = ref('')
   const password = ref('')
   const isLoggedIn = computed(() => user.value !== null)
@@ -25,6 +26,28 @@ export const useAuthStore = defineStore('auth', () => {
     user.value = data.user
   }
 
+  const signUpWithEmail = async (email: string, password: string, username: string) => {
+    const { data, error } = await supabase.auth.signUp({ email, password })
+    if (error) throw error
+    user.value = data.user
+
+    supabase.auth.onAuthStateChange(async (event, session) => {
+      if (event === 'SIGNED_IN' && session?.user?.id) {
+        const userId = session.user.id
+
+        const { error: insertError } = await supabase
+          .from('users')
+          .insert([{ id: userId, username }])
+
+        if (insertError) {
+          console.error('Failed to insert username:', insertError.message)
+          throw insertError
+        }
+        user.value = session.user
+      }
+    })
+  }
+
   const signOut = async () => {
     const { error } = await supabase.auth.signOut()
     if (error) throw error
@@ -40,6 +63,8 @@ export const useAuthStore = defineStore('auth', () => {
   return {
     //for user management
     user,
+
+    username,
     email,
     password,
 
@@ -50,6 +75,7 @@ export const useAuthStore = defineStore('auth', () => {
     //functions
     getUser,
     signInWithEmail,
+    signUpWithEmail,
     signOut,
     listenToAuthChanges,
   }

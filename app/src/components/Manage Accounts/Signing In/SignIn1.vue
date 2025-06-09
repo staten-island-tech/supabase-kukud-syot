@@ -15,14 +15,12 @@
 
       <!-- daisyui -->
       <div class="join grid grid-cols-2 gap-2 mt-4">
-        <button class="join-item btn btn-outline opacity-50 cursor-not-allowed" disabled>
-          Previous
-        </button>
+        <button class="join-item btn btn-outline" @click="home">Home</button>
         <button class="join-item btn btn-outline" @click="submit">Next</button>
       </div>
 
       <div class="flex justify-center items-center space-x-4 mt-1.5 mb-1.5">
-        <GSignIn @click="Gsubmit" />
+        <GSignIn />
       </div>
     </div>
   </div>
@@ -30,11 +28,16 @@
 
 <script setup lang="ts">
 import { useAuthStore } from '../../../stores/auth'
+// @ts-ignore
 import GSignIn from '../GSignIn.vue'
 
 const auth = useAuthStore()
 
 const emit = defineEmits(['next', 'submit'])
+
+const home = () => {
+  window.location.href = '/'
+}
 
 const submit = () => {
   if (!auth.email) {
@@ -42,13 +45,5 @@ const submit = () => {
     return
   }
   emit('next')
-}
-
-const Gsubmit = () => {
-  if (!auth.email) {
-    alert('Enter email')
-    return
-  }
-  emit('submit')
 }
 </script>

@@ -14,6 +14,7 @@ async function handleCredentialResponse(response) {
     provider: 'google',
     token: response.credential,
   })
+  window.location.href = '/'
   console.log(googleDisplayName)
 
   if (data) {

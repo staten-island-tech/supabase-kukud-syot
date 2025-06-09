@@ -34,7 +34,7 @@ import GSignIn from '../GSignIn.vue'
 
 const auth = useAuthStore()
 
-const emit = defineEmits(['next'])
+const emit = defineEmits(['next', 'submit'])
 
 const submit = () => {
   if (!auth.email) {

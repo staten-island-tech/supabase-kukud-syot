@@ -1,13 +1,12 @@
 <template>
   <div>
-    <h1 class="text-5xl">Welcome NameHERE</h1>
-    <br />
-    <hr />
-    <br />
-    <RouterLink to="/settings" class=""> Settings </RouterLink>
+    <h1>Welcome, {{ auth.display_name }}!</h1>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useAuthStore } from '../stores/auth'
+const auth = useAuthStore()
+</script>
 
 <style scoped></style>

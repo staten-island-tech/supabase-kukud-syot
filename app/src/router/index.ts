@@ -19,13 +19,27 @@ const router = createRouter({
       component: LoginView,
     },
     {
-      path: '/confirm',
+      path: '/confirmed',
       name: 'confirmation',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/Accounts/EmailConfirmation.vue'),
     },
+    {
+      path: '/reset-password',
+      name: 'resetting password',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/Accounts/PasswordReset.vue'),
+    },
+    {
+      path: '/profile/:username',
+      name: 'user-profile',
+      component: () => import('../views/Accounts/UserProfile.vue'),
+    },
+
     {
       path: '/signin',
       name: 'signin',

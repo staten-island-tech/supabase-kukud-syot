@@ -10,6 +10,9 @@ export const useAuthStore = defineStore('auth', () => {
   const password = ref('')
   const isLoggedIn = computed(() => user.value !== null)
   const userEmail = computed(() => user.value?.email ?? '')
+  const display_name = ref('')
+  const profile_picture = ref('')
+  const bio = ref('')
 
   const getUser = async () => {
     const { data, error } = await supabase.auth.getUser()
@@ -18,6 +21,41 @@ export const useAuthStore = defineStore('auth', () => {
       return
     }
     user.value = data.user
+  }
+
+  const getData = async (userId: string) => {
+    const { data, error } = await supabase
+      .from('users')
+      .select('display_name, username, bio')
+      .eq('id', userId)
+      .maybeSingle()
+
+    if (!error && data) {
+      display_name.value = data.display_name
+      username.value = data.username
+      bio.value = data.bio
+    }
+  }
+
+  const getPFP = async (userId: string) => {
+    const { data, error } = await supabase
+      .from('users')
+      .select('profile_picture_path')
+      .eq('id', userId)
+      .maybeSingle()
+
+    if (error) {
+      console.error('Failed to fetch profile picture path:', error.message)
+      profile_picture.value = ''
+      return
+    }
+
+    if (data && data.profile_picture_path) {
+      const { data: urlData } = await supabase.storage
+        .from('profile-pictures')
+        .getPublicUrl(data.profile_picture_path)
+      profile_picture.value = urlData.publicUrl
+    }
   }
 
   const signInWithEmail = async (email: string, password: string) => {
@@ -57,26 +95,52 @@ export const useAuthStore = defineStore('auth', () => {
   const listenToAuthChanges = () => {
     supabase.auth.onAuthStateChange((_event, session) => {
       user.value = session?.user ?? null
+      if (user.value && user.value.id) {
+        getData(user.value.id)
+      } else {
+        display_name.value = ''
+      }
     })
+  }
+
+  const resetPasssword = async (email: string) => {
+    const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: 'https://auth.crocodillo.org/reset-password',
+    })
+    if (error) throw error
+    return data
+  }
+
+  const updatePassword = async (newPassword: string) => {
+    const { data, error } = await supabase.auth.updateUser({ password: newPassword })
+    if (error) throw error
+    return data
   }
 
   return {
     //for user management
     user,
 
+    display_name,
     username,
     email,
     password,
+    profile_picture,
+    bio,
 
     //computed stuff
     isLoggedIn,
     userEmail,
 
     //functions
+    getData,
+    getPFP,
     getUser,
     signInWithEmail,
     signUpWithEmail,
     signOut,
+    resetPasssword,
+    updatePassword,
     listenToAuthChanges,
   }
 })

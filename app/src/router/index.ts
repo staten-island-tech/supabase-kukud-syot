@@ -35,10 +35,9 @@ const router = createRouter({
       component: () => import('../views/Accounts/PasswordReset.vue'),
     },
     {
-      path: '/profile/:id',
+      path: '/profile/:username',
       name: 'user-profile',
       component: () => import('../views/Accounts/UserProfile.vue'),
-      props: true,
     },
 
     {

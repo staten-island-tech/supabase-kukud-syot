@@ -18,6 +18,10 @@
         <button class="join-item btn btn-outline" @click="$emit('back')">Previous</button>
         <button class="join-item btn btn-outline" @click="submit">Sign In</button>
       </div>
+
+      <button class="btn btn-outline btn-default mt-4" @click="forgotPassword">
+        Forgot Password?
+      </button>
     </div>
   </div>
 </template>
@@ -34,5 +38,19 @@ const submit = () => {
     return
   }
   emit('submit')
+}
+
+const forgotPassword = async () => {
+  if (!auth.email) {
+    alert('Enter your email on the previous screen first.')
+    return
+  }
+
+  try {
+    await auth.resetPasssword(auth.email)
+    alert('Check your email.')
+  } catch (err: any) {
+    alert(err.message || 'error sending link')
+  }
 }
 </script>

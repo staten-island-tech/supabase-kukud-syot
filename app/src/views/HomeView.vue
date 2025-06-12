@@ -1,11 +1,12 @@
 <template>
   <div>
-    <RouterLink to="/login">login</RouterLink>
+    <h1>Welcome, {{ auth.display_name }}!</h1>
   </div>
 </template>
 
 <script setup lang="ts">
-import LoginView from './LoginView.vue'
+import { useAuthStore } from '../stores/auth'
+const auth = useAuthStore()
 </script>
 
 <style scoped></style>

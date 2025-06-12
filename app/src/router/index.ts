@@ -35,6 +35,13 @@ const router = createRouter({
       component: () => import('../views/Accounts/PasswordReset.vue'),
     },
     {
+      path: '/profile/:id',
+      name: 'user-profile',
+      component: () => import('../views/Accounts/UserProfile.vue'),
+      props: true,
+    },
+
+    {
       path: '/signin',
       name: 'signin',
       // route level code-splitting

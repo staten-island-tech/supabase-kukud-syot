@@ -62,7 +62,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   const resetPasssword = async (email: string) => {
     const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/reset-password`,
+      redirectTo: 'https://www.crocodillo.org/reset-password',
     })
     if (error) throw error
     return data

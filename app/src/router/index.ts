@@ -19,7 +19,7 @@ const router = createRouter({
       component: LoginView,
     },
     {
-      path: '/confirm',
+      path: '/confirmed',
       name: 'confirmation',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route

@@ -87,6 +87,7 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted } from 'vue'
 import { useAuthStore } from '../stores/auth'
 import { useRouter } from 'vue-router'
 
@@ -112,6 +113,9 @@ const signOut = async () => {
     console.error('logout failed:', error.message)
   }
 }
+onMounted(async () => {
+  auth.getPFP
+})
 </script>
 
 <style scoped></style>

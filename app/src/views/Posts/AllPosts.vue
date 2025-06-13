@@ -51,6 +51,8 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { supabase } from '../../GetKeys'
+import { useAuthStore } from '../../stores/auth'
+const auth = useAuthStore()
 
 const posts = ref<any[]>([])
 
@@ -116,5 +118,6 @@ const getPosts = async () => {
 
 onMounted(() => {
   getPosts()
+  auth.getPFP
 })
 </script>

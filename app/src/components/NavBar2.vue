@@ -3,7 +3,7 @@
     <div class="navbar bg-base-100 shadow-sm">
       <div class="w-10 rounded-full">
         <img
-          :src="'../../../public/favicon.ico'"
+          :src="'/favicon.ico'"
           alt="Profile picture"
           class="w-32 h-auto rounded-md object-cover"
         />

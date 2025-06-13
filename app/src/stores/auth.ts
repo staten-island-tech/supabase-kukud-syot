@@ -70,7 +70,7 @@ export const useAuthStore = defineStore('auth', () => {
   const updateUserName = async (newName: string) => {
     if (!user.value) return
     await supabase.from('users').update({ username: newName }).eq('id', user.value.id)
-    display_name.value = newName
+    username.value = newName
   }
 
   const updateBio = async (newBio: string) => {

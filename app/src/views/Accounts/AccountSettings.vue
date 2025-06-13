@@ -21,7 +21,7 @@
           placeholder="Username"
           class="input input-bordered w-full"
         />
-        <button class="btn btn-sm mt-2" @click="updateuserName">Save</button>
+        <button class="btn btn-sm mt-2" @click="updateUserName">Save</button>
       </div>
 
       <div class="mb-4">

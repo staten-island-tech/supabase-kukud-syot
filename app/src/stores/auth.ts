@@ -50,11 +50,14 @@ export const useAuthStore = defineStore('auth', () => {
       return
     }
 
-    if (data && data.profile_picture_path) {
-      const { data: urlData } = await supabase.storage
-        .from('profile-pictures')
-        .getPublicUrl(data.profile_picture_path)
-      profile_picture.value = urlData.publicUrl
+    if (data?.profile_picture_path) {
+      const { publicUrl } = supabase.storage
+        .from('profile_pictures')
+        .getPublicUrl(data.profile_picture_path).data
+
+      profile_picture.value = publicUrl
+    } else {
+      profile_picture.value = ''
     }
   }
 
@@ -147,8 +150,10 @@ export const useAuthStore = defineStore('auth', () => {
       user.value = session?.user ?? null
       if (user.value && user.value.id) {
         getData(user.value.id)
+        getPFP(user.value.id)
       } else {
         display_name.value = ''
+        profile_picture.value = ''
       }
     })
   }

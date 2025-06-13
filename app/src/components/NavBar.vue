@@ -113,9 +113,6 @@ const signOut = async () => {
     console.error('logout failed:', error.message)
   }
 }
-onMounted(async () => {
-  auth.getPFP
-})
 </script>
 
 <style scoped></style>

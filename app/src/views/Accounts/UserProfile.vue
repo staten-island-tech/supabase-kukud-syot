@@ -100,6 +100,7 @@ const getUser = async (usernameParam: string) => {
     .select(
       'display_name, username, bio, profile_picture_path, followers, following, likes, created_at, id',
     )
+
     .eq('username', usernameParam)
     .maybeSingle()
 
@@ -119,11 +120,11 @@ const getUser = async (usernameParam: string) => {
     created_at.value = data.created_at
 
     if (data.profile_picture_path) {
-      const { data: urlData } = supabase.storage
+      const { publicUrl } = supabase.storage
         .from('profile_pictures')
-        .getPublicUrl(data.profile_picture_path)
+        .getPublicUrl(data.profile_picture_path).data
 
-      profile_picture.value = urlData.publicUrl
+      profile_picture.value = publicUrl
     }
   }
 }

@@ -57,6 +57,7 @@ const auth = useAuthStore()
 const posts = ref<any[]>([])
 
 function getPublicUrl(path: string) {
+  if (!path) return ''
   return supabase.storage.from('profile_pictures').getPublicUrl(path).data.publicUrl
 }
 
@@ -118,6 +119,5 @@ const getPosts = async () => {
 
 onMounted(() => {
   getPosts()
-  auth.getPFP
 })
 </script>

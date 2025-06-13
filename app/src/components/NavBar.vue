@@ -38,7 +38,7 @@
           <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar">
             <div class="w-10 rounded-full">
               <img
-                :src="auth.profile_picture || '../../../public/favicon.ico'"
+                :src="auth.profile_picture || '/favicon.ico'"
                 alt="Profile picture"
                 class="w-32 h-32 rounded-full object-cover"
               />

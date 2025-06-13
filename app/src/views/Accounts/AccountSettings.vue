@@ -13,6 +13,16 @@
         />
         <button class="btn btn-sm mt-2" @click="updateDisplayName">Save</button>
       </div>
+      <div class="mb-4">
+        <label class="label font-semibold">Username</label>
+        <input
+          v-model="userNameInput"
+          type="text"
+          placeholder="Username"
+          class="input input-bordered w-full"
+        />
+        <button class="btn btn-sm mt-2" @click="updateuserName">Save</button>
+      </div>
 
       <div class="mb-4">
         <label class="label font-semibold">Profile Picture</label>
@@ -54,6 +64,7 @@ import { useAuthStore } from '../../stores/auth'
 const auth = useAuthStore()
 
 const displayNameInput = ref(auth.display_name)
+const userNameInput = ref(auth.username)
 const bioInput = ref(auth.bio)
 const selectedFile = ref<File | null>(null)
 const previewUrl = ref<string>('')
@@ -71,6 +82,12 @@ onMounted(() => {
 const updateDisplayName = async () => {
   if (!displayNameInput.value.trim()) return
   await auth.updateDisplayName(displayNameInput.value)
+  alert('success')
+}
+
+const updateUserName = async () => {
+  if (!userNameInput.value.trim()) return
+  await auth.updateUserName(userNameInput.value)
   alert('success')
 }
 

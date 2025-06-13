@@ -24,6 +24,8 @@
 
 <script setup lang="ts">
 import { useAuthStore } from '../../../stores/auth'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const auth = useAuthStore()
 
 const emit = defineEmits(['back', 'next', 'submit'])
@@ -33,6 +35,7 @@ const submit = () => {
     alert('Enter Username')
     return
   }
-  emit('submit', 'next')
+  emit('submit')
+  router.push({ name: 'home' })
 }
 </script>

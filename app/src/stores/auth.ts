@@ -58,6 +58,56 @@ export const useAuthStore = defineStore('auth', () => {
     }
   }
 
+  const updateDisplayName = async (newName: string) => {
+    if (!user.value) return
+    await supabase.from('users').update({ display_name: newName }).eq('id', user.value.id)
+    display_name.value = newName
+  }
+
+  const updateBio = async (newBio: string) => {
+    if (!user.value) return
+    await supabase.from('users').update({ bio: newBio }).eq('id', user.value.id)
+    bio.value = newBio
+  }
+
+  const uploadProfilePicture = async (file: File) => {
+    if (!user.value) return
+
+    const fileName = `${user.value.id}-${Date.now()}-${file.name}`
+    const { error: uploadErr } = await supabase.storage
+      .from('profile-pictures')
+      .upload(fileName, file, {
+        upsert: true,
+        contentType: file.type,
+      })
+
+    if (uploadErr) {
+      console.error('Upload failed:', uploadErr.message)
+      return
+    }
+
+    await supabase.from('users').update({ profile_picture_path: fileName }).eq('id', user.value.id)
+    await getPFP(user.value.id)
+  }
+
+  const deleteAccount = async () => {
+    if (!user.value) return
+
+    const confirmed = confirm(
+      'Are you sure you want to delete your account? This cannot be undone.',
+    )
+    if (!confirmed) return
+
+    await supabase.from('users').delete().eq('id', user.value.id)
+
+    const { error } = await supabase.auth.admin.deleteUser(user.value.id)
+    if (error) {
+      console.error('Failed to delete auth user:', error.message)
+      return
+    }
+
+    await signOut()
+  }
   const signInWithEmail = async (email: string, password: string) => {
     const { data, error } = await supabase.auth.signInWithPassword({ email, password })
     if (error) throw error
@@ -138,6 +188,10 @@ export const useAuthStore = defineStore('auth', () => {
     getUser,
     signInWithEmail,
     signUpWithEmail,
+    updateDisplayName,
+    uploadProfilePicture,
+    updateBio,
+    deleteAccount,
     signOut,
     resetPasssword,
     updatePassword,

@@ -8,6 +8,7 @@
           <h2 class="card-title">View Posts</h2>
           <RouterLink to="/posts" class="btn btn-outline mt-4"> Posts </RouterLink>
           <RouterLink to="/create-post" class="btn btn-outline mt-4"> Create Post </RouterLink>
+          <RouterLink to="/fun" class="btn btn-outline mt-4"> Idk </RouterLink>
         </div>
       </div>
     </div>

@@ -22,7 +22,7 @@
       ></textarea>
     </div>
 
-    <button class="btn btn-primary" @click="createPost">Create Post</button>
+    <button class="btn btn-outline" @click="createPost">Create Post</button>
   </div>
 </template>
 

@@ -93,6 +93,15 @@ const router = createRouter({
       component: () => import('../views/Posts/CreatePost.vue'),
       meta: { requiresAuth: true },
     },
+    {
+      path: '/fun',
+      name: 'fun',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../components/Fun.vue'),
+      meta: { requiresAuth: true },
+    },
   ],
 })
 

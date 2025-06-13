@@ -1,13 +1,18 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
+import { RouterView, useRoute } from 'vue-router'
+//@ts-ignore
+import NavBar from './components/NavBar.vue'
+import NavBar2 from './components/NavBar2.vue'
+import { computed } from 'vue'
+
+const router = useRoute()
+const showNav = computed(() => !router.meta.hideNav)
 </script>
 
 <template>
   <div>
-    <div class="flex items-center justify-center">
-      <img src="/favicon.ico" alt="icon" class="flex h-12 w-auto" />
-      <h1 class="flex text-center text-5xl">LOGO</h1>
-    </div>
+    <NavBar v-if="showNav" />
+    <NavBar2 v-if="!showNav" />
     <div class="min-h-screen flex flex-col pt-16">
       <div class="flex-1 p-4">
         <RouterView />

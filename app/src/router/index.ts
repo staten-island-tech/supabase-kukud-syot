@@ -17,6 +17,7 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component: LoginView,
+      meta: { hideNav: true },
     },
     {
       path: '/confirmed',
@@ -25,6 +26,7 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/Accounts/EmailConfirmation.vue'),
+      meta: { hideNav: true },
     },
     {
       path: '/reset-password',
@@ -38,6 +40,7 @@ const router = createRouter({
       path: '/profile/:username',
       name: 'user-profile',
       component: () => import('../views/Accounts/UserProfile.vue'),
+      meta: { requiresAuth: true },
     },
 
     {
@@ -47,6 +50,7 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/Accounts/MainSignin.vue'),
+      meta: { hideNav: true },
     },
     {
       path: '/signup',
@@ -55,6 +59,16 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/Accounts/MainSignup.vue'),
+      meta: { hideNav: true },
+    },
+    {
+      path: '/posts/:postId',
+      name: 'each post',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/Posts/PostCard.vue'),
+      meta: { requiresAuth: true },
     },
   ],
 })

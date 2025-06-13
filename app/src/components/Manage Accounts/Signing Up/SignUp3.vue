@@ -26,13 +26,13 @@
 import { useAuthStore } from '../../../stores/auth'
 const auth = useAuthStore()
 
-const emit = defineEmits(['back', 'next'])
+const emit = defineEmits(['back', 'next', 'submit'])
 
 const submit = () => {
   if (!auth.username) {
     alert('Enter Username')
     return
   }
-  emit('next')
+  emit('submit', 'next')
 }
 </script>

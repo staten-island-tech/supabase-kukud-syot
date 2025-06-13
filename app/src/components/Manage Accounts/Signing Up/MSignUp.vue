@@ -35,7 +35,6 @@ const previousStep = () => {
 const submit = async () => {
   try {
     await auth.signUpWithEmail(auth.email, auth.password, auth.username)
-    router.push({ name: 'home' })
   } catch (err: any) {
     alert(err.message || 'failed signup')
   }
